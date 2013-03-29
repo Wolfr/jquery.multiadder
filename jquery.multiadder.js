@@ -61,8 +61,6 @@ $(document).ready(function() {
       removeMultiAdderRow(thisMultiAdderRow);
     });
 
-
-
   // Optional jwerty support
   if (jwerty) {
     $('.multi-adder input').focus(function() {
@@ -78,4 +76,3 @@ $(document).ready(function() {
   };
   
 });
-
