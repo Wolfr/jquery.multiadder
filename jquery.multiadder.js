@@ -13,9 +13,7 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-$(document).ready(function() {
-
-  // Add a row to multi adder
+(function($) {
 
   function addMultiAdderRow(thisMultiAdder)
   {
@@ -23,28 +21,37 @@ $(document).ready(function() {
     if (thisMultiAdder.children('.multi-adder-row').length == 0) {
       // If there are no rows yet
       thisMultiAdder.find('>:first-child').after(row);
-      thisMultiAdder.find('.multi-adder-row:first').find('input[type=text],textarea,select').filter(':visible:first').focus();
+      thisMultiAdder
+        .find('.multi-adder-row:first')
+        .find('input, textarea, select')
+        .filter(':visible:first')
+        .focus();
     } else {
-      // If there are
-      thisMultiAdder.children('.multi-adder-row:last').after(row);
-      // This is bugged
-      thisMultiAdder.find('.multi-adder-row:last').find('input[type=text],textarea,select').filter(':visible:first').focus();
+      // If there are rows add row after the last one
+      thisMultiAdder
+        .children('.multi-adder-row:last').after(row);
+        
+      var lastRow = thisMultiAdder.find('> .multi-adder-row:last');
+      
+      lastRow
+        .find('input, textarea, select')
+        .filter(':visible:first')
+        .focus();
     }
   }
   
-  // Remove a row from multi adder
-  // This is bugged
   function removeMultiAdderRow(thisMultiAdderRow)
   {
     thisMultiAdderRow.remove();
   }
 
-  $('.multi-adder .multi-add').click(function(e) {
+  // Add a row to multi adder
+  $('.multi-add').click(function(e) {
     e.preventDefault();
 
-    var thisMultiAdder = $(this).parents('.multi-adder');
-
-    var maxRows = thisMultiAdder.attr('data-maxrows');
+    // Set up our variables
+    var thisMultiAdder = $(this).parents('.multi-adder'),
+        maxRows = thisMultiAdder.attr('data-maxrows');
 
     if (thisMultiAdder.find('.multi-adder-row').length < maxRows) {
       addMultiAdderRow(thisMultiAdder);
@@ -53,16 +60,18 @@ $(document).ready(function() {
     }
   });
 
-  // Delete a row from multiAdder
-  $('.multi-adder .multi-adder-delete').click(function(e) {
+  // Delete a row from multi adder
+  // Is bugged
+  $('.multi-adder-delete').on('click', function(e) {
       e.preventDefault();
-
       var thisMultiAdderRow = $(this).parents('.multi-adder-row');
       removeMultiAdderRow(thisMultiAdderRow);
     });
 
   // Optional jwerty support
-  if (jwerty) {
+  // Is bugged
+  if (typeof JwertyCode == 'function') {
+    alert('jwery');
     $('.multi-adder input').focus(function() {
       jwerty.key('enter', function () {
         addMultiAdderRow();
@@ -73,6 +82,24 @@ $(document).ready(function() {
         removeMultiAdderRow();
       });
     });
-  };
+  }
   
-});
+  // To make this a real plugin?
+  // $.fn.pluginName = function() {
+  //   var method = arguments[0];
+  //  
+  //   if(methods[method]) {
+  //     method = methods[method];
+  //     arguments = Array.prototype.slice.call(arguments, 1);
+  //   } else if( typeof(method) == 'object' || !method ) {
+  //     method = methods.init;
+  //   } else {
+  //     $.error( 'Method ' +  method + ' does not exist on jQuery.pluginName' );
+  //     return this;
+  //   }
+  //  
+  //   return method.apply(this, arguments);
+  //  
+  // }
+  
+})(jQuery);
