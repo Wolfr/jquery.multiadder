@@ -1,6 +1,7 @@
 /*
  * Pattern: Multi adder
  * A generic way to repeating part in an HTML file
+ * version 0.1
  * 
  * E.g. you would use it to make a list you can add 5 items to (see demo)
  * 
@@ -30,7 +31,7 @@
       // If there are rows add row after the last one
       thisMultiAdder
         .children('.multi-adder-row:last').after(row);
-        
+
       var lastRow = thisMultiAdder.find('> .multi-adder-row:last');
       
       lastRow
@@ -46,7 +47,7 @@
   }
 
   // Add a row to multi adder
-  $('.multi-add').click(function(e) {
+  $('.multi-adder').on('click', '.multi-add', function(e){
     e.preventDefault();
 
     // Set up our variables
@@ -61,45 +62,26 @@
   });
 
   // Delete a row from multi adder
-  // Is bugged
-  $('.multi-adder-delete').on('click', function(e) {
-      e.preventDefault();
-      var thisMultiAdderRow = $(this).parents('.multi-adder-row');
-      removeMultiAdderRow(thisMultiAdderRow);
-    });
+  $('.multi-adder').on('click', '.multi-adder-delete', function(e){
+    e.preventDefault();
+    var thisMultiAdderRow = $(this).parents('.multi-adder-row');
+    removeMultiAdderRow(thisMultiAdderRow);
+  });
 
   // Optional jwerty support
   // Is bugged
-  if (typeof JwertyCode == 'function') {
-    alert('jwery');
-    $('.multi-adder input').focus(function() {
-      jwerty.key('enter', function () {
-        addMultiAdderRow();
-      });
-    });
-    $('.multi-adder .multi-adder-delete').focus(function() {
-      jwerty.key('enter', function () {
-        removeMultiAdderRow();
-      });
-    });
-  }
-  
-  // To make this a real plugin?
-  // $.fn.pluginName = function() {
-  //   var method = arguments[0];
-  //  
-  //   if(methods[method]) {
-  //     method = methods[method];
-  //     arguments = Array.prototype.slice.call(arguments, 1);
-  //   } else if( typeof(method) == 'object' || !method ) {
-  //     method = methods.init;
-  //   } else {
-  //     $.error( 'Method ' +  method + ' does not exist on jQuery.pluginName' );
-  //     return this;
-  //   }
-  //  
-  //   return method.apply(this, arguments);
-  //  
+  // if (typeof jwerty == 'function') {
+  //   alert('jwerty');
+  //   $('.multi-adder input').focus(function() {
+  //     jwerty.key('enter', function () {
+  //       addMultiAdderRow();
+  //     });
+  //   });
+  //   $('.multi-adder .multi-adder-delete').focus(function() {
+  //     jwerty.key('enter', function () {
+  //       removeMultiAdderRow();
+  //     });
+  //   });
   // }
-  
+
 })(jQuery);
