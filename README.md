@@ -5,4 +5,4 @@ jquery.multiadder.js provides a generic markup pattern to prototype "multi adder
 
 This can be used independent of Twitter Bootstrap, just make to include the necessary <code>.hide</code> CSS class.
 
-View the <a href="demo.html">demo.
+View the <a href="http://www.wolfslittlestore.be/jquery.multiadder"> online demo</a>.
