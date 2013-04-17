@@ -29,7 +29,7 @@
       var row = thisMultiAdder.find('.multi-adder-row-holder:hidden').html();
 
       // If there are no rows yet
-      if (thisMultiAdder.children('.multi-adder-row').length == 0) {
+      if (thisMultiAdder.children('.multi-adder-row').length === 0) {
         thisMultiAdder.find('>:first-child').after(row);
         thisMultiAdder
           .find('.multi-adder-row:first')
@@ -63,9 +63,7 @@
       var thisMultiAdder = $(this).parents('.multi-adder');
 
       // Only set up our maxRows var if the attribute exists
-      if (thisMultiAdder.attr('data-maxrows')) {
-        var maxRows = thisMultiAdder.attr('data-maxrows');
-      }
+      var maxRows = thisMultiAdder.attr('data-maxrows') || 0;
 
       // Stop adding rows if max rows value is reached
       if (maxRows) {
