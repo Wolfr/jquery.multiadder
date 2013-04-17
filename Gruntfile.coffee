@@ -14,7 +14,7 @@ module.exports = (grunt) ->
         uglify:
             all:
                 files:
-                    'js/jquery.extendedinput.min.js': ['js/jquery.extendedinput.js']
+                    'js/jquery.multiadder.min.js': ['js/jquery.multiadder.js']
 
         watch:
             all:
