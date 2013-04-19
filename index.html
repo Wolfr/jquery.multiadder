@@ -4,23 +4,38 @@
     <title>jquery.multiadder.js demo</title>
     <meta charset="utf-8">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Include bootstrap -->
     <link rel="stylesheet" href="components/bootstrap-sass/bootstrap-2.3.1.min.css" type="text/css">
+    <link rel="stylesheet" href="components/bootstrap-sass/bootstrap-responsive-2.3.1.css" type="text/css" media="screen" title="no title" charset="utf-8">
     
     <style type="text/css" media="screen">
 
-    /* Style for demo */
+    /* Styles for demo */
+    
+    body, html {
+        margin: 0;
+        padding: 0;
+    }
 
     h1, h2, h3, h4 {
-		color: #333;
-	}
+      color: #333;
+    }
 
-	#container {
-		padding: 20px;
-		margin: 0 auto;
-		width: 80%;
-		max-width: 600px;
-	}
+    #container {
+        padding: 2% 5%;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    pre, code, h2 {
+     white-space: pre-wrap;       /* css-3 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    }
 
     /* Necessary styles */
     .hide {
@@ -33,9 +48,9 @@
 <body>
 
     <div id="container">
-        
+
         <h2>jquery.multiadder.js demo</h2>
-        <p>jquery.multiadder.js provides a generic markup pattern to prototype "multi adders". Click the "add" buttton to add an option. A data attribute (<code>data-maxrows</code>) limits the amount.</p>
+        <p>jquery.multiadder.js provides a generic markup pattern to prototype "multi adders". Click the "add" buttton to add an option. An optional data attribute (<code>data-maxrows</code>) limits the amount.</p>
         <p>This can be used independent of Twitter Bootstrap, just make to include the necessary <code>.hide</code> CSS class.</p>
         <div class="form-horizontal">
             <div class="control-group">
@@ -43,7 +58,7 @@
                 <div class="controls">
                     <div class="multi-adder" data-maxrows="5">
                         <p class="clearfix">
-                            <select>
+                            <select class="input-small">
                                 <option>Apples</option>
                                 <option>Pears</option>
                                 <option>Oranges</option>
@@ -57,7 +72,7 @@
                         <div class="multi-adder-row-holder hide">
                             <div class="multi-adder-row">
                                 <p>
-                                    <select>
+                                    <select class="input-small">
                                         <option>Apples</option>
                                         <option>Pears</option>
                                         <option>Oranges</option>
@@ -73,13 +88,37 @@
                 </div>
             </div>
         </div>
+        
+        <hr>
+        
+        <h3>Contributing</h3>
+        
+        <p>File issues in the Github repo.</p>
 
-        <h3>todo</h3>
+        <h4>To run locally</h4>
         <ul>
-            <li>Fix jwerty keyboard support</li>
+            <li>Make sure you have nodejs and bower installed</li>
+            <li>Git clone the repository <code>git clone git@github.com:Wolfr/jquery.bootstrap.simple.lightbox.git</code></li>
+            <li>Run <code>npm install</code> and <code>bower install</code></li>
         </ul>
 
-        <h3>license</h3>
+        <h4>To build</h4>
+        <ul>
+            <li>Make sure you have grunt installed</li>
+            <li>Run <code>grunt</code></li>
+        </ul>
+
+        <hr>
+
+        <h3>Todo</h3>
+        <ul>
+            <li>Fix jwerty keyboard support</li>
+            <li>Hide class should be an option</li>
+        </ul>
+
+        <hr>
+
+        <h3>License</h3>
         <p>
             ©2013, <a href="http://www.wolfslittlestore.be">Wolf's Little Store</a> - Free to use under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.
         </p>
