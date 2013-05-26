@@ -1,20 +1,3 @@
-/*
- * Pattern: Multi adder
- * A generic way to repeating part in an HTML file
- * version 0.2
- * 
- * E.g. you would use it to make a list you can add 5 items to (see demo)
- * 
- * REQUIRED add a maximum with data attribute:
- * <div class="multi-adder" data-maxrows="5">
- *
- * www.wolfslittlestore.be
- * Copyright 2013, Wolf's Little Store
- * Free to use under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
-*/
-
-
 (function( $ ) {
   $.fn.multiAdder = function(options) {
   
@@ -27,6 +10,7 @@
     function addMultiAdderRow(thisMultiAdder)
     {
       var row = thisMultiAdder.find('.multi-adder-row-holder:hidden').html();
+      console.log(row);
 
       // If there are no rows yet
       if (thisMultiAdder.children('.multi-adder-row').length === 0) {
@@ -87,19 +71,30 @@
 
     // Optional jwerty support
     // Is bugged
-    // if (typeof jwerty == 'function') {
-    //   alert('jwerty');
-    //   $('.multi-adder input').focus(function() {
-    //     jwerty.key('enter', function () {
-    //       addMultiAdderRow();
-    //     });
-    //   });
-    //   $('.multi-adder .multi-adder-delete').focus(function() {
-    //     jwerty.key('enter', function () {
-    //       removeMultiAdderRow();
-    //     });
-    //   });
-    // }
+
+    if (typeof jwerty.is == 'function') {
+      
+      // Adding
+      $('.multi-adder input').focus(function() {
+
+        jwerty.key('enter', function () {
+          // Set up our variables
+          var thisMultiAdder = $('.multi-adder input:first').parents('.multi-adder');
+          addMultiAdderRow(thisMultiAdder);
+        });
+
+      });
+
+      // Deleting
+      jwerty.key('enter', function () {
+        // Set up our variables
+        var thisMultiAdderRow = $(this).parents('.multi-adder-row');
+        removeMultiAdderRow(thisMultiAdderRow);
+        console.log('deleting');
+        
+      }, $(this), '.multi-adder .multi-adder-delete');
+
+    }
 
   };
 })(jQuery);
