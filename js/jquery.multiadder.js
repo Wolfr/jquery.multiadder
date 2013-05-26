@@ -10,7 +10,6 @@
     function addMultiAdderRow(thisMultiAdder)
     {
       var row = thisMultiAdder.find('.multi-adder-row-holder:hidden').html();
-      console.log(row);
 
       // If there are no rows yet
       if (thisMultiAdder.children('.multi-adder-row').length === 0) {
