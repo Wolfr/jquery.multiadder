@@ -69,32 +69,5 @@
       removeMultiAdderRow(thisMultiAdderRow);
     });
 
-    // Optional jwerty support
-    // Is bugged
-
-    if (typeof jwerty.is == 'function') {
-      
-      // Adding
-      $('.multi-adder input').focus(function() {
-
-        jwerty.key('enter', function () {
-          // Set up our variables
-          var thisMultiAdder = $('.multi-adder input:first').parents('.multi-adder');
-          addMultiAdderRow(thisMultiAdder);
-        });
-
-      });
-
-      // Deleting
-      jwerty.key('enter', function () {
-        // Set up our variables
-        var thisMultiAdderRow = $(this).parents('.multi-adder-row');
-        removeMultiAdderRow(thisMultiAdderRow);
-        console.log('deleting');
-        
-      }, $(this), '.multi-adder .multi-adder-delete');
-
-    }
-
   };
 })(jQuery);
